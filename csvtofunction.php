@@ -9,14 +9,14 @@
        Date               : <br>
        Description        : <br>
        Reference #        : <br>
-      */
+      */ <br>
    ';
 
    $ls_code = '// LS Code //
 
    ';
    
-   $contant_values = '
+   $contant_values = ' 
       client = zoho.crm.getRecordById("Contacts",clientID); <br>
       company = client.get("Filing_Key"); <br>
       ClaimantsFirstName = client.get("First_Name"); <br>
@@ -26,7 +26,7 @@
    $ls_values = '
       //START OF VALUES <br>';
    $post_values = '
-      //START OF POST//
+      //START OF POST// <br>
       response = invokeurl
       [ <br>';
 
@@ -70,6 +70,7 @@
    }
    echo $comment;
    echo "<br>";
+   echo "// START OF CONSTANT VALUES // <br>";
    echo $contant_values;
    echo "<br>";
    echo $ls_values;
