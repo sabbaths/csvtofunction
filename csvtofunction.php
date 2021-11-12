@@ -12,9 +12,7 @@
       */ <br>
    ';
 
-   $ls_code = '// LS Code //
-
-   ';
+   $ls_code = '';
    
    $contant_values = ' 
       client = zoho.crm.getRecordById("Contacts",clientID); <br>
@@ -75,9 +73,8 @@
    echo "<br>";
    echo $ls_values;
    echo "<br>";
-   echo $post_values . "}];";
+   echo rtrim($post_values, ', <br>') . "}];";
    echo "<br>";
-   echo $ls_code;
    echo <<<END
       // LS Code // <br>
       currentDay = zoho.currenttime.toString("yyyy-MM-dd'T'HH:mm:ss"); <br>
@@ -96,7 +93,7 @@
             response = zoho.crm.updateRecord("Claims",claim.get("id"),customInfo); <br>
          } <br>
          /** HVAC **/ <br>
-         else if((claim.get("Claim_SubType") == "HVAC IBS – GWI Presumptive" || claim.get("Claim_SubType") == "HVAC Headache – GWI Presumptive" || claim.get("Claim_SubType") == "HVAC Sinusitis – GWI <br>Presumptive" || claim.get("Claim_SubType") == "HVAC Allergic Rhinitis – GWI Presumptive" || claim.get("Claim_SubType") == "HVAC Skin Condition – GWI Presumptive") && (claim.get("Claim_Status") == <br>"Awaiting Responses" || claim.get("Claim_Status") == "Questionnaire Follow Up" || claim.get("Claim_Status") == "Unresponsive Questionnaire")) <br>
+         else if((claim.get("Claim_SubType") == "HVAC IBS – GWI Presumptive" || claim.get("Claim_SubType") == "HVAC Headache – GWI Presumptive" || claim.get("Claim_SubType") == "HVAC Sinusitis – GWI Presumptive" || claim.get("Claim_SubType") == "HVAC Allergic Rhinitis – GWI Presumptive" || claim.get("Claim_SubType") == "HVAC Skin Condition – GWI Presumptive") && (claim.get("Claim_Status") == "Awaiting Responses" || claim.get("Claim_Status") == "Questionnaire Follow Up" || claim.get("Claim_Status") == "Unresponsive Questionnaire")) <br>
          { <br>
             customInfo = {"Responses_Received":true}; <br>
             response = zoho.crm.updateRecord("Claims",claim.get("id"),customInfo,{"trigger":{'workflow','blueprint'}}); <br>
@@ -104,4 +101,5 @@
          } <br>
       } <br>
       END;
+
 ?>
